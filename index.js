@@ -4,7 +4,7 @@ function fetchPokemonWithWorker(pokemonNames) {
         return new Promise((resolve, reject) => {
             const worker = new Worker('worker.js');
 
-            // Send the Pokémon name to the Web Worker
+            // Sends the Pokémon name to the web worker
             worker.postMessage(name);
 
             // Listen for messages from the worker
@@ -25,16 +25,15 @@ function fetchPokemonWithWorker(pokemonNames) {
         });
     });
 
-    // Using Promise.any to get the first successful fetch
+    // Using Promise.any to run promises and returns the first promise that's fulfilled from a list of promises
     return Promise.any(promises);
 }
-
 // Function to call the promise-based Web Worker and handle the result
 function fetchAndDisplayPokemon() {
     const pokemonName = document.getElementById("pokemonName").value.toLowerCase();
 
     // Fetch data for the input name and an alternative name
-    const pokemonNames = [pokemonName, "pikachu", "bulbasaur"]; // Add more Pokémon names as needed
+    const pokemonNames = [pokemonName]; // Add more Pokémon names as needed
 
     fetchPokemonWithWorker(pokemonNames)
         .then(data => {
@@ -63,7 +62,7 @@ function fetchAllPokemons() {
                 const imgElement = document.createElement("img");
                 imgElement.src = pokemonSprite;
                 imgElement.style.display = "block";
-                document.body.appendChild(imgElement); // Append each Pokémon sprite to the body
+                document.body.appendChild(imgElement); // Append each Pokémon sprite to the body, if it's able to fetch it properly
             });
         })
         .catch(error => {

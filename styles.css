@@ -34,7 +34,7 @@ button {
 }
 
 button:hover {
-    background-color: darkblue;
+    background-color: darkblue; /*Whenever the cursor hovers above the button, it turns the button darker*/
 }
 
 /* Pokemon sprite styling */
